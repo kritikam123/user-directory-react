@@ -1,5 +1,6 @@
 import type { User } from "../types/user";
 import { useEffect, useState } from "react";
+import { UserCard } from "./UserCard";
 
 export function UserDirectory() {
     const [users, setUsers] = useState<User[]>([]);
@@ -10,7 +11,7 @@ export function UserDirectory() {
          async function getUsers() {
             try{
             
-            const response = await fetch (`https://jsonplaceholder.typicode.com/userss`);
+            const response = await fetch (`https://jsonplaceholder.typicode.com/users`);
 
             if(!response.ok){
                 throw new Error("Failed to fetch data");
@@ -39,7 +40,14 @@ export function UserDirectory() {
     if(error) {
         return <p>Error: {error}</p>
     }
-    return(<p>
+    return(<div>
         {users.length} users loaded
-    </p>);
+        <ul>
+            {users.map((user)=> (
+                <li key={user.id}>
+                    <UserCard user={user} />
+                </li>
+            ))}
+        </ul>
+    </div>);
 }
