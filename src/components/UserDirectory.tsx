@@ -31,10 +31,11 @@ export function UserDirectory() {
     getUsers();
   }, []);
 
+  const query = search.trim().toLowerCase();
   const filteredUsers = users.filter(
     (user) =>
-      user.name.toLowerCase().includes(search.toLowerCase()) ||
-      user.email.toLowerCase().includes(search.toLowerCase()),
+      user.name.toLowerCase().includes(query) ||
+      user.email.toLowerCase().includes(query),
   );
 
   if (isLoading) {
@@ -47,7 +48,7 @@ export function UserDirectory() {
   return (
     <div>
       <div>
-        <label htmlFor="search">Search</label> <br />
+        <label htmlFor="search">Search</label>{" "}
         <input
           type="text"
           placeholder="Wanna search anyone?"
@@ -55,7 +56,6 @@ export function UserDirectory() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />{" "}
-        <br />
       </div>
       <ul>
         {filteredUsers.map((user) => (
@@ -64,6 +64,8 @@ export function UserDirectory() {
           </li>
         ))}
       </ul>
+
+      {filteredUsers.length === 0 && <p>No users found</p>}
     </div>
   );
 }
