@@ -6,6 +6,7 @@ export function UserDirectory() {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function getUsers() {
@@ -30,6 +31,12 @@ export function UserDirectory() {
     getUsers();
   }, []);
 
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      user.email.toLowerCase().includes(search.toLowerCase()),
+  );
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -39,9 +46,19 @@ export function UserDirectory() {
   }
   return (
     <div>
-      {users.length} users loaded
+      <div>
+        <label htmlFor="search">Search</label> <br />
+        <input
+          type="text"
+          placeholder="Wanna search anyone?"
+          id="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />{" "}
+        <br />
+      </div>
       <ul>
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <li key={user.id}>
             <UserCard user={user} />
           </li>
