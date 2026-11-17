@@ -1,0 +1,1 @@
+1. Dependency array is used in useEffect because it controls when the effect run again. So without [], it runs in every render and cause endless loop of reuest. .

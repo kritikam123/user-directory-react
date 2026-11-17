@@ -47,17 +47,17 @@ export function UserDirectory() {
   }
   return (
     <div>
-      <div>
-        <label htmlFor="search">Search</label>{" "}
+      <div className="search-container">
+        <label htmlFor="search">Search by name or email</label>
         <input
           type="text"
-          placeholder="Wanna search anyone?"
+          placeholder="eg. Leanne"
           id="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />{" "}
+        />
       </div>
-      <ul>
+      <ul className="user-list">
         {filteredUsers.map((user) => (
           <li key={user.id}>
             <UserCard user={user} />

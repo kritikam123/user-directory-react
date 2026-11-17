@@ -1,5 +1,8 @@
 * { 
 box-sizing: border-box;
+padding: 2px;
+margin: 8px;
+
 }
 
 body {
@@ -13,6 +16,12 @@ body {
   gap: 20px;
   padding: 0;
   list-style: none;
+}
+
+.search-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 @media (min-width: 768px) {
