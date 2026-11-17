@@ -1,14 +1,8 @@
 * { 
 box-sizing: border-box;
-padding: 2px;
-margin: 8px;
-
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+body { margin: 0; padding: 24px; font-family: Arial, sans-serif; }
 
 .user-list{
   display: grid;
@@ -22,6 +16,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.user-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 @media (min-width: 768px) {

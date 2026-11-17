@@ -6,7 +6,7 @@ interface UserCardProps {
 
 export function UserCard({ user }: UserCardProps) {
   return (
-    <div>
+    <div className="user-card">
       <h2>{user.name}</h2>
       <p>{user.email}</p>
       <p>{user.address.city}</p>
